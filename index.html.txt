@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عرض البيانات المدخلة</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #2d3436;
+color: #fff;
+text-align: center;
+padding: 50px;
+}
+.container {
+background: #1e272e;
+padding: 30px;
+border-radius: 10px;
+width: 90%;
+max-width: 500px;
+margin: auto;
+}
+input, button {
+padding: 12px;
+margin: 10px 0;
+width: 100%;
+border-radius: 5px;
+border: none;
+}
+button {
+background-color: #00b894;
+color: white;
+font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>أدخل بياناتك</h2>
+
+<!-- نموذج الإدخال -->
+<div id="form">
+<input type="text" id="username" placeholder="أدخل اسم المستخدم" autocomplete="off">
+<input type="password" id="password" placeholder="أدخل كلمة المرور" autocomplete="off">
+<button onclick="handleSubmit()">إرسال</button>
+</div>
+</div>
+
+<script>
+function handleSubmit() {
+// الحصول على البيانات المدخلة
+const username = document.getElementById("username").value;
+const password = document.getElementById("password").value;
+
+// إنشاء URL لصفحة جديدة مع البيانات المدخلة
+const userInfoPage = window.open('', '_blank');
+userInfoPage.document.write(`
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>البيانات المدخلة</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f0f0f0;
+color: #333;
+text-align: center;
+padding: 50px;
+}
+.container {
+background: #fff;
+padding: 30px;
+border-radius: 10px;
+width: 90%;
+max-width: 500px;
+margin: auto;
+}
+p {
+font-size: 18px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>البيانات المدخلة:</h2>
+<p><strong>اسم المستخدم:</strong> ${username}</p>
+<p><strong>كلمة المرور:</strong> ${password}</p>
+</div>
+</body>
+</html>
+`);
+}
+</script>
+</body>
+</html>
